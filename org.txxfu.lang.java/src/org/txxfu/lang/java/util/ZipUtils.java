@@ -99,6 +99,15 @@ public class ZipUtils {
 //					+ "wlp.zip");
 			// Unzip wlp (Liberty)
 			unzipFromStream(in, eclipseHomeFolder);
+			setPermission(eclipseHomeFolder + File.separator + "wlp");
+		}
+	}
+
+	private static void setPermission(String wlpPath) {
+		String[] permissionFileName = new String[]{"server", "isadc", "productInfo", "securityUtility"};
+		for (String fileName : permissionFileName) {
+			File executableFile = new File(wlpPath + File.separator + "bin" + File.separator + fileName);
+			executableFile.setExecutable(true);
 		}
 	}
 }

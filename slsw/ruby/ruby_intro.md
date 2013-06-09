@@ -121,11 +121,19 @@ Page **48/356**
 
 ## Day 3 Serious Change
 
+Metaprogramming means writing programs that write programs, 
+**Active Record framework**
+
+
 #### Open Classes
+* With redefining freedom, you could refine any class or object at any time
 
 #### Via method_missing
+* Ruby calls a special debugging method when a method is missing
+* much more difficult to debug, no longer tell you when a method is missing!
 
 #### Modules
+* DSL defines methods in a module that adds all the methods and constants needed to manage a class
 
 #### What We Learned in Day 3
 
@@ -148,4 +156,4 @@ Page **48/356**
 
 
 
-
+page end

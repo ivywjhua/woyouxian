@@ -135,22 +135,17 @@ Metaprogramming means writing programs that write programs,
 #### Modules
 * DSL defines methods in a module that adds all the methods and constants needed to manage a class
 
+- The interesting thing about all these metaprogramming techniques is that your programs can change based on the state of your application.
+
 #### What We Learned in Day 3
 
+## 2.5 Wrapping Up Ruby
 
+* Core Strengths
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
+* adf
+ 
 
 
 

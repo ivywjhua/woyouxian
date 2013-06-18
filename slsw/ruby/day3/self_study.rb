@@ -11,9 +11,17 @@ module ActsAsCsv
 		end
 	end
 
-	module CsvRow
-		def method_name
-			
+	class CsvRow
+		attr_accessor :header_row, :content_row
+
+		def initialize(header_row, content_row)
+			@header_row = header_row
+			@content_row = content_row
+		end
+
+		def method_missing name, *args
+			content_index = @header_row.index(name.to_s)
+			return @content_row[content_index]
 		end
 	end
 
@@ -21,17 +29,20 @@ module ActsAsCsv
 		
 		def read
 			@csv_contents = []
+			@csv_rows = []
 			filename = self.class.to_s.downcase + '.txt'
 			file = File.new(filename)
 			@headers = file.gets.chomp.split(',')
 
 			file.each do |row|
 				@csv_contents << row.chomp.split(',')
+				row_content = row.chomp.split(',')
+				@csv_rows << CsvRow.new(@headers, row_content)
 			end
 		end
 
-		def each
-			@csv_contents
+		def each &block
+			@csv_rows.each &block
 		end
 		
 		attr_accessor :headers, :csv_contents
@@ -51,4 +62,4 @@ m = SelfStudyCsv.new
 puts m.headers.inspect
 puts m.csv_contents.inspect
 puts "===================="
-m.each {|row| puts row}
+m.each {|row| puts row.one}

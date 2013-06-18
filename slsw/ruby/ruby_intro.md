@@ -142,9 +142,14 @@ Metaprogramming means writing programs that write programs,
 ## 2.5 Wrapping Up Ruby
 
 * Core Strengths
-
-    
-* adf
+* Scripting
+* Web Development
+* Time to Market
+* Weakness
+* Performance
+* Concurrency and OOP
+* Type Safety
+* Final Thoughts
  
 
 

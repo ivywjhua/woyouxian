@@ -16,6 +16,12 @@ public class AvailablePortTest {
 	public void setUp() {
 		avaiPort = new NetstatAvailablePort();
 	}
+	
+	// @Test
+	public void t(){
+		boolean portAvailable = avaiPort.portAvailable(450);
+		System.out.println(portAvailable);
+	}
 
 	@Test
 	public void testPortAvailable() {

@@ -18,10 +18,7 @@ public class NetstatAvailablePort {
 	private static final String COLON = ":";
 
 	public boolean portAvailable(int port) {
-		String[] commands = new String[3];
-		commands[0] = "/bin/sh";
-		commands[1] = "-c";
-		commands[2] = "netstat -an | grep " + String.valueOf(port);
+		String[] commands = netstatCommand(port);
 		ProcessBuilder pb = new ProcessBuilder();
 		pb.command(commands);
 
@@ -78,6 +75,27 @@ public class NetstatAvailablePort {
 		} catch (InterruptedException e) {
 			throw MyExceptionUtils.uncheckException(e);
 		}
+	}
+	
+	private static String[] netstatCommand(int port) {
+		String os = System.getProperty("os.name").toLowerCase();
+    	String[] commands;
+    	if (os.contains("windows")) {
+    		commands = new String[7];
+			commands[0] = "cmd";
+			commands[1] = "/c";
+			commands[2] = "netstat";
+			commands[3] = "-an";
+			commands[4] = "|";
+			commands[5] = "findstr";
+			commands[6] = String.valueOf(port);
+		} else {
+			commands = new String[3];
+			commands[0] = "/bin/sh";
+			commands[1] = "-c";
+			commands[2] = "netstat -an | grep " + String.valueOf(port);
+		}
+		return commands;
 	}
 
 }

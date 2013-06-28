@@ -1,4 +1,4 @@
-package org.txxfu.lang.java;
+package org.txxf.lang.java.net;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -6,7 +6,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Random;
 
-public class AvailablePortTest {
+public class SocketAvailablePort {
 
 	public static final Random random = new Random();
 
@@ -66,7 +66,6 @@ public class AvailablePortTest {
 		int port = 0;
 		do {
 			port = random.nextInt(10000) + 20000;
-			// System.out.println("=======>" + port);
 		} while(!portAvailable(port));
 		return port;
 	}
@@ -78,13 +77,6 @@ public class AvailablePortTest {
 			System.out.println(port + " port available:");
 		}
 
-		/*
-		try {
-			Thread.sleep(10 * 1000);
-		} catch (Exception e) {
-			// do nothing
-		}
-		*/
 		System.out.println("Thread sleep over");
 	}
 
